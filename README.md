@@ -17,17 +17,17 @@
 
 
 ```html
-<button data-bubbles="向上提示" data-bubbles-pos="up">向上提示</button>
+<button data-tooltips="向上提示" data-tooltips-pos="up">向上提示</button>
 向上提示
 ```
 
 ## 常规使用方法
 
-直接在页面中引用`bubbles.min.css`
+直接在页面中引用`tooltips.min.css`
 
 ```html
-<link rel="stylesheet" href="bubbles.min.css">
-<span data-bubbles="我是提示" data-bubbles-pos="up">bubbles</span>
+<link rel="stylesheet" href="tooltips.min.css">
+<span data-tooltips="我是提示" data-tooltips-pos="up">tooltips</span>
 ```
 
 
