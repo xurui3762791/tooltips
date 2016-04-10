@@ -25,7 +25,7 @@
 直接在页面中引用`bubbles.min.css`
 
 ```html
-<link rel="stylesheet" href="bubbles.min.css">
-<span data-bubbles="我是提示" data-bubbles-pos="up">bubbles</span>
+<link rel="stylesheet" href="tooltips.min.css">
+<span data-tooltips="我是提示" data-tooltips-pos="up">tooltips</span>
 ```
 
