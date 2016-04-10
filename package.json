@@ -1,6 +1,6 @@
 {
   "name": "tooltips",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "纯css工具提示 tooltips",
   "main": "index.js",
   "scripts": {
