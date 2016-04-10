@@ -22,7 +22,7 @@
 
 ## 常规使用方法
 
-直接在页面中引用`bubbles.min.css`
+直接在页面中引用`tooltips.min.css`
 
 ```html
 <link rel="stylesheet" href="tooltips.min.css">
