@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>    
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css
+">
+    <link rel="stylesheet" type="text/css" href="./bulid/css/bubbles.min.css">
+
+    
+
+</head>
+<body>
+
+<div class="bubbles-header">
+      <div class="container">
+            <h1>bubbles.css</h1>
+            <p>纯css打造的工具提示</p>
+
+            <a href="#" data-bubbles="Github Project" data-bubbles-pos="up" class="btn btn-lg btn-primary">Github Project</a>
+            <a href="" data-bubbles="Download CSS" data-bubbles-pos="up" class="btn btn-lg btn-link hidden-xs">Download CSS</a>
+      </div>
+</div>
+<div class="container">
+        <h4>示例</h4>
+        <p class="titie">气泡方向：上、下、左、右</p>
+<div class="col-md-6">
+    
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles=&quot;<span class="text-danger">向上提示</span>&quot; data-bubbles-pos=&quot;<span class="text-danger">up</span>&quot;&gt;向上提示&lt;/button&gt;</code></pre>
+            <button data-bubbles="向上提示" data-bubbles-pos="up" class="btn btn-primary">向上提示</button>
+        </div>
+
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles=&quot;<span class="text-danger">向左提示</span>&quot; data-bubbles-pos=&quot;<span class="text-danger">left</span>&quot;&gt;向左提示&lt;/button&gt;</code></pre>
+            <button data-bubbles="向左提示" data-bubbles-pos="left" class="btn btn-primary">向左提示</button>
+        </div>
+    
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles=&quot;<span class="text-danger">向右提示</span>&quot; data-bubbles-pos=&quot;<span class="text-danger">right</span>&quot;&gt;向右提示&lt;/button&gt;</code></pre>
+            <button data-bubbles="向右提示" data-bubbles-pos="right" class="btn btn-primary">向右提示</button>
+        </div>
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles=&quot;<span class="text-danger">向下提示</span>&quot; data-bubbles-pos=&quot;<span class="text-danger">down</span>&quot;&gt;向下提示&lt;/button&gt;
+</code></pre>
+            <button data-bubbles="向下提示" data-bubbles-pos="down" class="btn btn-primary">向下提示</button>
+        </div>
+</div>
+
+        <p class="titie">气泡长度：小、中、大、宽度适合于元素</p>
+
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles-length=&quot;<span class="text-danger">small</span>&quot; data-bubbles=&quot;<span class="text-danger">我是小提示</span>&quot; data-bubbles-pos=&quot;<span class="text-danger">up</span>&quot;&gt;我是小提示&lt;/button&gt;
+</code></pre>
+            <button data-bubbles="我是小提示" data-bubbles-pos="up" data-bubbles-length="small" class="btn btn-primary">我是小提示</button>
+        </div>
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles-length=&quot;<span class="text-danger">medium</span>&quot; data-bubbles=&quot;<span class="text-danger">我是中等提示</span>&quot; data-bubbles-pos=&quot;up&quot;&gt;<span class="text-danger">我是中等提示</span>&lt;/button&gt;
+</code></pre>
+
+    <button data-bubbles="我是中等提示我是中等提示我是中等提示我是中等提示" data-bubbles-pos="up" data-bubbles-length="medium" class="btn btn-primary">我是中等提示</button>
+        </div>
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles-length=&quot;<span class="text-danger">large</span>&quot; data-bubbles=&quot;<span class="text-danger">我是大提示</span>&quot; data-bubbles-pos=&quot;up&quot;&gt;<span class="text-danger">我是大提示</span>&lt;/button&gt;</code></pre>
+
+    <button data-bubbles="我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示我是大提示" data-bubbles-pos="large" data-bubbles-length="large" class="btn btn-primary">我是大提示</button>
+        </div>
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles-length=&quot;<span class="text-danger">xlarge</span>&quot; data-bubbles=&quot;<span class="text-danger">我是一个超大的提示</span>&quot; data-bubbles-pos=&quot;up&quot;&gt;<span class="text-danger">我是一个超大的提示</span>&lt;/button&gt;</code></pre>
+<button data-bubbles="我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示我是一个超大的提示" data-bubbles-pos="up" data-bubbles-length="xlarge" class="btn btn-primary">我是一个超大的提示</button>
+
+
+        </div>
+</div>
+<div class="col-md-6">
+        <div class="bubbles-content">
+<pre><code class="text-primary">&lt;button data-bubbles-length=&quot;<span class="text-danger">fit</span>&quot; data-bubbles=&quot;<span class="text-danger">宽度适合于元素提示</span>&quot; data-balloon-pos=&quot;<span class="text-danger">up</span>&quot;&gt;宽度适合于元素提示&lt;/button&gt;</code></pre>
+<button data-bubbles-length="fit" data-bubbles="宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示宽度适合于元素提示" data-bubbles-pos="up" class="btn btn-primary">宽度适合于元素提示</button>
+
+
+        </div>
+</div>
+
+
+
+</div>
+
+<div class="container">
+        <h4>使用方法</h4>
+        <p class="titie">在HTML上添加bubbles.min.css</p>
+        <div class="col-md-12">
+<pre><code class="text-primary">&lt;link rel=&quot;<span class="text-danger">stylesheet</span>&quot; href=&quot;<span class="text-danger">bubbles.min.css</span>&quot;&gt;</code></pre>
+        </div>
+        <p class="titie">给标签添加 data-bubbles 和 data-bubbles-pos 属性</p>
+        <div class="col-md-12">
+<pre><code class="text-primary">&lt;span data-bubbles=&quot;<span class="text-danger">我是提示</span>&quot; data-bubbles-pos=&quot;<span class="text-danger">up</span>&quot;&gt;bubbles&lt;/span&gt;</code></pre>
+        </div>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

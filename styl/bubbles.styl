@@ -1,0 +1,206 @@
+
+// Variables
+
+$bubbles-bg =             fade-out(#111, .1) 
+$bubbles-base-size =      12px 
+$bubbles-arrow-height =   6px 
+
+
+
+mixin-svg-arrow($width, $height, $degrees) {
+    $arrow-width =  $width * 2;
+    $arrow-height = $height * 2;
+    background  s('url(%s)', 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="'+$arrow-width+'" height="'+ $arrow-height +'"><path fill="rgba(17, 17, 17, 0.9)" transform="rotate('+$degrees+')" d="M2.658,0.000 C-13.615,0.000 50.938,0.000 34.662,0.000 C28.662,0.000 23.035,12.002 18.660,12.002 C14.285,12.002 8.594,0.000 2.658,0.000 Z"/></svg>') no-repeat;
+
+    background-size: 100% auto;
+    height: $height ;
+    width: $width;
+}
+
+svg-arrow($color, $position) {
+    
+
+    if ($position == up) {
+        $width= $bubbles-base-size + 6 ;
+        $height= ($bubbles-base-size / 2)
+        $degrees= 0;
+        mixin-svg-arrow($width, $height, $degrees);
+    }
+    if ($position == down) {
+        $width= $bubbles-base-size + 6 ;
+        $height= ($bubbles-base-size / 2)
+        $degrees= 180 18 6;
+        mixin-svg-arrow($width, $height, $degrees);
+    }
+    if ($position == left) {
+        $width= $bubbles-base-size - 6;
+        $height= $bubbles-base-size + 6;
+        $degrees= -90 18 18;
+        mixin-svg-arrow($width, $height, $degrees);
+    }
+    if ($position == right) {
+        $width= $bubbles-base-size - 6;
+        $height= $bubbles-base-size + 6;
+        $degrees= 90 6 6;
+        mixin-svg-arrow($width, $height, $degrees);
+    }
+}
+
+
+transition(args...)
+    -webkit-transition  args 
+    -moz-transition  args 
+    -ms-transition  args 
+    -o-transition  args 
+    transition  args 
+
+transform(val) 
+    -webkit-transform: val;
+    -moz-transform: val;
+    -ms-transform: val;
+    transform: val;
+
+transform-origin(val)
+    -webkit-transform-origin: val;
+    -moz-transform-origin: val;
+    -ms-transform-origin: val;
+    transform-origin: val;
+
+
+
+
+opacity(trans)
+    filter unquote('Alpha(Opacity=' + round(trans * 100) + ')')    
+    -ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(trans * 100) + ')')
+    -moz-opacity  trans 
+    -khtml-opacity  trans 
+    opacity  trans
+
+
+
+
+base-effects()
+    opacity 0 
+    pointer-events: none 
+    transition all .18s ease-out .18s  
+    transform(translate(-50%, 10px));
+    transform-origin(top);
+
+
+
+[data-bubbles] 
+    position  relative 
+    &:before,
+    &:after
+        base-effects()
+        bottom  100% 
+        left  50% 
+        position  absolute 
+        z-index  10 
+    &:after
+        background: $bubbles-bg;
+        border-radius: ($bubbles-base-size / 3);
+        color: #fff;
+        content: attr(data-bubbles);
+        font-size: $bubbles-base-size;
+        padding: .5em 1em;
+        white-space: nowrap;
+        margin-bottom: $bubbles-base-size - 1;
+    &:before
+        svg-arrow($bubbles-bg, up);
+        margin-bottom: $bubbles-base-size - 7;
+        content: '';
+        position: absolute;
+        z-index: 10;
+    &:hover
+        &:before,
+        &:after 
+            opacity 1
+            pointer-events: auto;
+            transform(translate(-50%, 0));
+
+    [data-bubbles-break]
+        &:after
+            white-space: normal;
+
+
+
+
+
+
+
+
+
+[data-bubbles-pos="down"]
+    &:before,
+    &:after
+        bottom: auto;
+        left: 50%;
+        top: 100%;
+        transform(translate(-50%, -10px));
+    &:after
+        margin-top: $bubbles-base-size - 1;
+    &:before
+        svg-arrow($bubbles-bg, down);
+        margin-top: $bubbles-base-size - 7;
+        margin-bottom: 0;
+    &:hover
+        &:before,
+        &:after
+            transform(translate(-50%, 0)); 
+
+
+[data-bubbles-pos="left"]
+    &:before,
+    &:after 
+        bottom: auto;
+        left: auto;
+        right: 100%;
+        top: 50%;
+        transform(translate(10px, -50%));
+    &:after 
+        margin-right: $bubbles-base-size - 1;
+    &:before
+        svg-arrow($bubbles-bg, left);
+        margin-right: $bubbles-base-size - 7;
+        margin-bottom: 0;
+    &:hover 
+        &:before,
+        &:after 
+            transform(translate(0, -50%)); 
+
+
+
+
+[data-bubbles-pos="right"]
+    &:before,
+    &:after
+        bottom: auto;
+        left: 100%;
+        top: 50%;
+        transform(translate(-10px, -50%));
+    &:after
+        margin-left: $bubbles-base-size - 1;
+
+    &:before 
+        svg-arrow($bubbles-bg, right);
+        margin-bottom: 0;
+        margin-left: $bubbles-base-size - 7;
+    &:hover 
+        &:before,
+        &:after 
+            transform(translate(0, -50%)); 
+
+:after 
+    [data-bubbles-length]&          { white-space: normal; }
+    [data-bubbles-length="small"]&  { width: 80px; }
+    [data-bubbles-length="medium"]& { width: 150px; }
+    [data-bubbles-length="large"]&  { width: 260px; }
+    [data-bubbles-length="xlarge"]& { width: 90vw;
+        @media screen and (min-width: 768px) { width: 380px; }
+    }
+    [data-bubbles-length="fit"]&    { width: 100%; }
+    
+
+
+
