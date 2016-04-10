@@ -1,5 +1,7 @@
 # tooltips
 
+[![](https://jaywcjlove.github.io/sb/ico/stylus.svg)](http://stylus-lang.com/) ![](http://jaywcjlove.github.io/sb/license/mit.svg) [![GitHub issues](https://img.shields.io/github/issues/xurui3762791/tooltips.svg)](https://github.com/xurui3762791/tooltips/issues) [![GitHub forks](https://img.shields.io/github/forks/xurui3762791/tooltips.svg)](https://github.com/xurui3762791/tooltips/network) [![GitHub stars](https://img.shields.io/github/stars/xurui3762791/tooltips.svg)](https://github.com/xurui3762791/tooltips/stargazers)
+
 纯css工具提示  bubbles-tooltips [查看效果](http://xurui3762791.github.io/tooltips/)
 
 
