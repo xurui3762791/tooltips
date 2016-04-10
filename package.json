@@ -1,20 +1,22 @@
 {
-  "name": "bubbles",
-  "version": "1.0.0",
-  "description": "bubbles",
+  "name": "gh-pages",
+  "version": "1.0.1",
+  "description": "纯css工具提示 tooltips",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "stylus -u autoprefixer-stylus styl/index.styl -o dist/index.min.css -c",
+    "watch": "stylus -u autoprefixer-stylus -w styl/index.styl -o dist/index.min.css -c "
   },
-  "author": "",  
+  "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xurui3762791/bubbles"
+    "url": "https://github.com/xurui3762791/tooltips"
   },
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-stylus": "^2.3.1",
-    "gulp-watch": "^4.3.5",
-    "gulp-concat": "^2.6.0"
+  "devDependencies": {},
+  "dependencies": {
+    "autoprefixer-stylus": "^0.9.2",
+    "stylus": "^0.54.2",
+    "tooltips": "^1.0.2"
   }
 }
