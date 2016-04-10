@@ -25,3 +25,11 @@
 <span data-bubbles="我是提示" data-bubbles-pos="up">bubbles</span>
 ```
 
+
+# 开发 
+
+```bash
+$ npm run build
+$ npm run watch
+```
+
