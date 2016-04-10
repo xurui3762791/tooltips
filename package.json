@@ -1,6 +1,6 @@
 {
   "name": "gh-pages",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "纯css工具提示 tooltips",
   "main": "index.js",
   "scripts": {
