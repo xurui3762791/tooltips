@@ -1,17 +1,17 @@
 {
-  "name": "bubbles",
+  "name": "tooltips",
   "version": "1.0.0",
-  "description": "bubbles",
+  "description": "纯css工具提示 tooltips",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "stylus -u autoprefixer-stylus styl/bubbles.styl -o dist/bubbles.min.css -c",
-    "watch": "stylus -u autoprefixer-stylus -w styl/bubbles.styl -o dist/bubbles.min.css -c "
+    "build": "stylus -u autoprefixer-stylus styl/tooltips.styl -o dist/tooltips.min.css -c",
+    "watch": "stylus -u autoprefixer-stylus -w styl/tooltips.styl -o dist/tooltips.min.css -c "
   },
   "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xurui3762791/bubbles"
+    "url": "https://github.com/xurui3762791/tooltips"
   },
   "devDependencies": {},
   "dependencies": {

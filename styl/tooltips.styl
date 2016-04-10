@@ -1,9 +1,9 @@
 
 // Variables
 
-$bubbles-bg =             fade-out(#111, .1) 
-$bubbles-base-size =      12px 
-$bubbles-arrow-height =   6px 
+$tooltips-bg =             fade-out(#111, .1) 
+$tooltips-base-size =      12px 
+$tooltips-arrow-height =   6px 
 
 
 
@@ -21,26 +21,26 @@ svg-arrow($color, $position) {
     
 
     if ($position == up) {
-        $width= $bubbles-base-size + 6 ;
-        $height= ($bubbles-base-size / 2)
+        $width= $tooltips-base-size + 6 ;
+        $height= ($tooltips-base-size / 2)
         $degrees= 0;
         mixin-svg-arrow($width, $height, $degrees);
     }
     if ($position == down) {
-        $width= $bubbles-base-size + 6 ;
-        $height= ($bubbles-base-size / 2)
+        $width= $tooltips-base-size + 6 ;
+        $height= ($tooltips-base-size / 2)
         $degrees= 180 18 6;
         mixin-svg-arrow($width, $height, $degrees);
     }
     if ($position == left) {
-        $width= $bubbles-base-size - 6;
-        $height= $bubbles-base-size + 6;
+        $width= $tooltips-base-size - 6;
+        $height= $tooltips-base-size + 6;
         $degrees= -90 18 18;
         mixin-svg-arrow($width, $height, $degrees);
     }
     if ($position == right) {
-        $width= $bubbles-base-size - 6;
-        $height= $bubbles-base-size + 6;
+        $width= $tooltips-base-size - 6;
+        $height= $tooltips-base-size + 6;
         $degrees= 90 6 6;
         mixin-svg-arrow($width, $height, $degrees);
     }
@@ -88,7 +88,7 @@ base-effects()
 
 
 
-[data-bubbles] 
+[data-tooltips] 
     position  relative 
     &:before,
     &:after
@@ -98,17 +98,17 @@ base-effects()
         position  absolute 
         z-index  10 
     &:after
-        background: $bubbles-bg;
-        border-radius: ($bubbles-base-size / 3);
+        background: $tooltips-bg;
+        border-radius: ($tooltips-base-size / 3);
         color: #fff;
-        content: attr(data-bubbles);
-        font-size: $bubbles-base-size;
+        content: attr(data-tooltips);
+        font-size: $tooltips-base-size;
         padding: .5em 1em;
         white-space: nowrap;
-        margin-bottom: $bubbles-base-size - 1;
+        margin-bottom: $tooltips-base-size - 1;
     &:before
-        svg-arrow($bubbles-bg, up);
-        margin-bottom: $bubbles-base-size - 7;
+        svg-arrow($tooltips-bg, up);
+        margin-bottom: $tooltips-base-size - 7;
         content: '';
         position: absolute;
         z-index: 10;
@@ -119,7 +119,7 @@ base-effects()
             pointer-events: auto;
             transform(translate(-50%, 0));
 
-    [data-bubbles-break]
+    [data-tooltips-break]
         &:after
             white-space: normal;
 
@@ -131,7 +131,7 @@ base-effects()
 
 
 
-[data-bubbles-pos="down"]
+[data-tooltips-pos="down"]
     &:before,
     &:after
         bottom: auto;
@@ -139,10 +139,10 @@ base-effects()
         top: 100%;
         transform(translate(-50%, -10px));
     &:after
-        margin-top: $bubbles-base-size - 1;
+        margin-top: $tooltips-base-size - 1;
     &:before
-        svg-arrow($bubbles-bg, down);
-        margin-top: $bubbles-base-size - 7;
+        svg-arrow($tooltips-bg, down);
+        margin-top: $tooltips-base-size - 7;
         margin-bottom: 0;
     &:hover
         &:before,
@@ -150,7 +150,7 @@ base-effects()
             transform(translate(-50%, 0)); 
 
 
-[data-bubbles-pos="left"]
+[data-tooltips-pos="left"]
     &:before,
     &:after 
         bottom: auto;
@@ -159,10 +159,10 @@ base-effects()
         top: 50%;
         transform(translate(10px, -50%));
     &:after 
-        margin-right: $bubbles-base-size - 1;
+        margin-right: $tooltips-base-size - 1;
     &:before
-        svg-arrow($bubbles-bg, left);
-        margin-right: $bubbles-base-size - 7;
+        svg-arrow($tooltips-bg, left);
+        margin-right: $tooltips-base-size - 7;
         margin-bottom: 0;
     &:hover 
         &:before,
@@ -172,7 +172,7 @@ base-effects()
 
 
 
-[data-bubbles-pos="right"]
+[data-tooltips-pos="right"]
     &:before,
     &:after
         bottom: auto;
@@ -180,26 +180,26 @@ base-effects()
         top: 50%;
         transform(translate(-10px, -50%));
     &:after
-        margin-left: $bubbles-base-size - 1;
+        margin-left: $tooltips-base-size - 1;
 
     &:before 
-        svg-arrow($bubbles-bg, right);
+        svg-arrow($tooltips-bg, right);
         margin-bottom: 0;
-        margin-left: $bubbles-base-size - 7;
+        margin-left: $tooltips-base-size - 7;
     &:hover 
         &:before,
         &:after 
             transform(translate(0, -50%)); 
 
 :after 
-    [data-bubbles-length]&          { white-space: normal; }
-    [data-bubbles-length="small"]&  { width: 80px; }
-    [data-bubbles-length="medium"]& { width: 150px; }
-    [data-bubbles-length="large"]&  { width: 260px; }
-    [data-bubbles-length="xlarge"]& { width: 90vw;
+    [data-tooltips-length]&          { white-space: normal; }
+    [data-tooltips-length="small"]&  { width: 80px; }
+    [data-tooltips-length="medium"]& { width: 150px; }
+    [data-tooltips-length="large"]&  { width: 260px; }
+    [data-tooltips-length="xlarge"]& { width: 90vw;
         @media screen and (min-width: 768px) { width: 380px; }
     }
-    [data-bubbles-length="fit"]&    { width: 100%; }
+    [data-tooltips-length="fit"]&    { width: 100%; }
     
 
 

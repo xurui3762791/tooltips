@@ -1,4 +1,4 @@
-# bubbles
+# tooltips
 
 纯css工具提示  bubbles-tooltips [查看效果](http://xurui3762791.github.io/bubbles/)
 
