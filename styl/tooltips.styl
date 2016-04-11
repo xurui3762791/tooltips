@@ -1,206 +1,314 @@
 
 // Variables
 
-$tooltips-bg =             fade-out(#111, .1) 
-$tooltips-base-size =      12px 
-$tooltips-arrow-height =   6px 
+
+$tooltipsPrefix ?= 'tooltips-' ;
+$tooltipsFontSize = 12px ;
+$tooltipsFontFamily = 'Helvetica Neue', Helvetica, Arial, sans-serif ;
+$tooltipsVerticalPadding = 8px ;
+$tooltipsHorizontalPadding = 10px ;
+
+$tooltipsTooltipHeight = $tooltipsFontSize + 2 * $tooltipsVerticalPadding ;
+
+$tooltipsArrowBorderWidth = 6px ;
+
+$tooltipsArrowOffsetX = 2 * $tooltipsArrowBorderWidth ;
+
+$tooltipsTextShadowDarkenAmount = 25% ;
+
+$tooltipsTransitionDistance = 8px ;
+
+$tooltipsShowDelay = 100ms ;
+
+$tooltipsHideDelay = 0ms 
+
+$tooltipsZIndex = 1000000 ;
+
+$tooltipsSizeSmall = 80px ;
+$tooltipsSizeMedium = 150px ;
+$tooltipsSizeLarge = 300px ;
 
 
 
-mixin-svg-arrow($width, $height, $degrees) {
-    $arrow-width =  $width * 2;
-    $arrow-height = $height * 2;
-    background  s('url(%s)', 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="'+$arrow-width+'" height="'+ $arrow-height +'"><path fill="rgba(17, 17, 17, 0.9)" transform="rotate('+$degrees+')" d="M2.658,0.000 C-13.615,0.000 50.938,0.000 34.662,0.000 C28.662,0.000 23.035,12.002 18.660,12.002 C14.285,12.002 8.594,0.000 2.658,0.000 Z"/></svg>') no-repeat;
+$tooltipsDefaultColor = hsl(0, 0%, 22%) ;
 
-    background-size: 100% auto;
-    height: $height ;
-    width: $width;
-}
 
-svg-arrow($color, $position) {
+
+$tooltipsErrorColor = hsl(1, 40%, 50%) ;
+$tooltipsWarningColor = hsl(38, 46%, 54%) ;
+$tooltipsInfoColor = hsl(200, 50%, 45%) ;
+$tooltipsSuccessColor = hsl(121, 32%, 40%) ;
+
+
+
+// mixins
+
+
+
+
+vendor(property, value)
+    {property}  value
+    -moz-{property}  value
+    -webkit-{property}  value
     
-
-    if ($position == up) {
-        $width= $tooltips-base-size + 6 ;
-        $height= ($tooltips-base-size / 2)
-        $degrees= 0;
-        mixin-svg-arrow($width, $height, $degrees);
-    }
-    if ($position == down) {
-        $width= $tooltips-base-size + 6 ;
-        $height= ($tooltips-base-size / 2)
-        $degrees= 180 18 6;
-        mixin-svg-arrow($width, $height, $degrees);
-    }
-    if ($position == left) {
-        $width= $tooltips-base-size - 6;
-        $height= $tooltips-base-size + 6;
-        $degrees= -90 18 18;
-        mixin-svg-arrow($width, $height, $degrees);
-    }
-    if ($position == right) {
-        $width= $tooltips-base-size - 6;
-        $height= $tooltips-base-size + 6;
-        $degrees= 90 6 6;
-        mixin-svg-arrow($width, $height, $degrees);
+arrow-border-color(color){
+     for position in top  bottom  left  right {
+        if position == top or position == bottom {
+            for xDir in left  right {
+                &.{$tooltipsPrefix}{position}-{xDir}:before {
+                    border-{position}-color: color;
+                }
+            }
+        }
+        
+        &.{$tooltipsPrefix}{position}:before {
+            border-{position}-color: color;
+        }
     }
 }
 
 
-transition(args...)
-    -webkit-transition  args 
-    -moz-transition  args 
-    -ms-transition  args 
-    -o-transition  args 
-    transition  args 
 
-transform(val) 
-    -webkit-transform: val;
-    -moz-transform: val;
-    -ms-transform: val;
-    transform: val;
-
-transform-origin(val)
-    -webkit-transform-origin: val;
-    -moz-transform-origin: val;
-    -ms-transform-origin: val;
-    transform-origin: val;
+set-margin(property, transitionDirection, $translateX=0) {
+    $value = unquote((property) + '('+ $tooltipsTransitionDistance * transitionDirection +')')
+    &:before {
+        vendor('transform', $value);
+    }
+    &:after {
+        if $translateX != 0 {
+            vendor('transform', translateX($translateX) $value);
+        }
+        else {
+            vendor('transform', $value);
+        }
+    }
+}
 
 
 
+vertical-positioned-tooltip(propertyY, transitionDirection, $xDirection=0)
+    &:before 
+        margin-{propertyY}: -2 * $tooltipsArrowBorderWidth + 1;
+ 
 
-opacity(trans)
-    filter unquote('Alpha(Opacity=' + round(trans * 100) + ')')    
-    -ms-filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(trans * 100) + ')')
-    -moz-opacity  trans 
-    -khtml-opacity  trans 
-    opacity  trans
-
-
-
-
-base-effects()
-    opacity 0 
-    pointer-events: none 
-    transition all .18s ease-out .18s  
-    transform(translate(-50%, 10px));
-    transform-origin(top);
-
-
-
-[data-tooltips] 
-    position  relative 
-    &:before,
-    &:after
-        base-effects()
-        bottom  100% 
-        left  50% 
-        position  absolute 
-        z-index  10 
-    &:after
-        background: $tooltips-bg;
-        border-radius: ($tooltips-base-size / 3);
-        color: #fff;
-        content: attr(data-tooltips);
-        font-size: $tooltips-base-size;
-        padding: .5em 1em;
-        white-space: nowrap;
-        margin-bottom: $tooltips-base-size - 1;
-    &:before
-        svg-arrow($tooltips-bg, up);
-        margin-bottom: $tooltips-base-size - 7;
-        content: '';
-        position: absolute;
-        z-index: 10;
-    &:hover
-        &:before,
-        &:after 
-            opacity 1
-            pointer-events: auto;
-            transform(translate(-50%, 0));
-
-    [data-tooltips-break]
-        &:after
-            white-space: normal;
-
-
-
-
-
-
-
-
-
-[data-tooltips-pos="down"]
-    &:before,
-    &:after
-        bottom: auto;
-        left: 50%;
-        top: 100%;
-        transform(translate(-50%, -10px));
-    &:after
-        margin-top: $tooltips-base-size - 1;
-    &:before
-        svg-arrow($tooltips-bg, down);
-        margin-top: $tooltips-base-size - 7;
-        margin-bottom: 0;
-    &:hover
-        &:before,
-        &:after
-            transform(translate(-50%, 0)); 
-
-
-[data-tooltips-pos="left"]
-    &:before,
-    &:after 
-        bottom: auto;
-        left: auto;
-        right: 100%;
-        top: 50%;
-        transform(translate(10px, -50%));
-    &:after 
-        margin-right: $tooltips-base-size - 1;
-    &:before
-        svg-arrow($tooltips-bg, left);
-        margin-right: $tooltips-base-size - 7;
-        margin-bottom: 0;
-    &:hover 
-        &:before,
-        &:after 
-            transform(translate(0, -50%)); 
-
-
-
-
-[data-tooltips-pos="right"]
-    &:before,
-    &:after
-        bottom: auto;
-        left: 100%;
-        top: 50%;
-        transform(translate(-10px, -50%));
-    &:after
-        margin-left: $tooltips-base-size - 1;
+    &:before, &:after
+        {propertyY}: 100%;
+        left: 50%; 
+    
 
     &:before 
-        svg-arrow($tooltips-bg, right);
-        margin-bottom: 0;
-        margin-left: $tooltips-base-size - 7;
-    &:hover 
-        &:before,
-        &:after 
-            transform(translate(0, -50%)); 
+        left  unquote(calc(50% - 6px))
+    $translateX = -50%;
+    if $xDirection == -1
+        $translateX = -100%;
+   
+    else if $xDirection == 1
+        $translateX = 0;
 
-:after 
-    [data-tooltips-length]&          { white-space: normal; }
-    [data-tooltips-length="small"]&  { width: 80px; }
-    [data-tooltips-length="medium"]& { width: 150px; }
-    [data-tooltips-length="large"]&  { width: 260px; }
-    [data-tooltips-length="xlarge"]& { width: 90vw;
-        @media screen and (min-width: 768px) { width: 380px; }
+    &:after 
+        vendor('transform', translateX($translateX));
+   
+
+    &:after
+        if $xDirection != 0 
+            margin-left: - ($xDirection * $tooltipsArrowOffsetX);
+
+    &:hover, &:focus
+        set-margin('translateY', transitionDirection, $translateX);
+ 
+
+horizontal-positioned-tooltip(propertyX, transitionDirection) {
+    &:before {
+        margin-{propertyX}: -2 * $tooltipsArrowBorderWidth + 1;
+        margin-bottom: -1 * $tooltipsArrowBorderWidth;
     }
-    [data-tooltips-length="fit"]&    { width: 100%; }
+
+    &:after {
+        margin-bottom: -1 * floor($tooltipsTooltipHeight / 2);
+    }
+
+    &:before, &:after {
+        {propertyX}: 100%;
+        bottom: 50%;
+    }
+
+    &:hover, &:focus {
+        set-margin('translateX', transitionDirection);
+    }
+}
+
+
+
+
+///====== style
+
+
+[data-tooltips]
+    position: relative;
+    display: inline-block;
+
+    &:before, 
+    &:after 
+        border-radius 3px;
+        position absolute
+        vendor('transform', translate3d(0, 0, 0))
+
+        visibility hidden
+        opacity 0
+        z-index $tooltipsZIndex
+        pointer-events: none
+
+        vendor('transition', 0.3s ease)
+        vendor('transition-delay', $tooltipsHideDelay)
+     
+
+
+    &:hover:before, 
+    &:hover:after
+        visibility  visible
+        opacity 1
+
+
+
+    &:hover:before, 
+    &:hover:after
+        vendor('transition-delay', $tooltipsShowDelay);
+
+
+
+    &:before 
+        content: '';
+        position: absolute;
+        background: transparent;
+        border: $tooltipsArrowBorderWidth solid transparent;
+        z-index: $tooltipsZIndex + 1;
+    &:after 
+        content: attr(data-tooltips); 
+        background: $tooltipsDefaultColor;
+        color: white;
+        padding: $tooltipsVerticalPadding $tooltipsHorizontalPadding;
+        font-size: $tooltipsFontSize;
+        font-family: $tooltipsFontFamily;
+        line-height: $tooltipsFontSize;
+        white-space: nowrap;
+
+[data-tooltips=''] 
+    &:before, 
+    &:after
+        display: none !important;
+
+
+
+
+
+
+
+
+arrow-border-color($tooltipsDefaultColor);
+
+
+.{$tooltipsPrefix}top 
+    vertical-positioned-tooltip('bottom', -1);
+
+
+.{$tooltipsPrefix}bottom 
+    vertical-positioned-tooltip('top', 1);
+
+
+.{$tooltipsPrefix}right
+    horizontal-positioned-tooltip('left', 1);
+
+.{$tooltipsPrefix}left
+    horizontal-positioned-tooltip('right', -1);
+
+.{$tooltipsPrefix}top-left
+    vertical-positioned-tooltip('bottom', -1, -1);
     
+.{$tooltipsPrefix}top-right 
+    vertical-positioned-tooltip('bottom', -1, 1);
+
+.{$tooltipsPrefix}bottom-left 
+    vertical-positioned-tooltip('top', 1, -1);
+
+.{$tooltipsPrefix}bottom-right
+    vertical-positioned-tooltip('top', 1, 1);
+
+
+
+
+
+// size
+
+
+.{$tooltipsPrefix}small,
+.{$tooltipsPrefix}medium,
+.{$tooltipsPrefix}large {
+    &:after {
+        white-space: normal;
+        line-height: 1.4em;
+    }
+}
+
+.{$tooltipsPrefix}small {
+    &:after {
+        width: $tooltipsSizeSmall;
+    }
+}
+.{$tooltipsPrefix}medium {
+    &:after {
+        width: $tooltipsSizeMedium;
+    }
+}
+.{$tooltipsPrefix}large {
+    &:after {
+        width: $tooltipsSizeLarge;
+    }
+}
+
+
+.{$tooltipsPrefix}always{
+    &:after, 
+    &:before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &.{$tooltipsPrefix}top {
+        set-margin('translateY', -1, -50%);
+
+        &-left {
+            set-margin('translateY', -1, -100%);
+        }
+        &-right {
+            set-margin('translateY', -1, 0);
+        }
+    }
+
+    &.{$tooltipsPrefix}bottom {
+        set-margin('translateY', 1, -50%);
+        &-left {
+            set-margin('translateY', 1, -100%);
+        }
+        &-right {
+        set-margin('translateY', 1, 0);
+        }
+    }
+
+    &.{$tooltipsPrefix}left {
+        set-margin('translateX', -1);
+    }
+
+    &.{$tooltipsPrefix}right {
+        set-margin('translateX', 1);
+    }
+}
+
+
+
+
+
+
+
 
 
 

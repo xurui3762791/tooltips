@@ -18,10 +18,7 @@
 ```
 
 
-```html
-<button data-tooltips="向上提示" data-tooltips-pos="up">向上提示</button>
-向上提示
-```
+
 
 ## 常规使用方法
 
@@ -32,6 +29,26 @@
 <span data-tooltips="我是提示" data-tooltips-pos="up">tooltips</span>
 ```
 
+## 在页面中使用
+
+```html
+
+<button data-tooltips="top" class="tooltips-top">top</button>
+<button data-tooltips="bottom" class="tooltips-bottom">bottom</button>
+<button data-tooltips="left" class="tooltips-left">left</button>
+<button data-tooltips="right" class="tooltips-right">right</button>
+<button data-tooltips="bottom-left" class="tooltips-bottom-left">bottom-left</button>
+<button data-tooltips="bottom-right" class="tooltips-bottom-right">bottom-right</button>
+<button data-tooltips="top-right" class="tooltips-top-right">top-right</button>
+<button data-tooltips="top-left" class="tooltips-top-left">top-left</button>
+
+<button class="tooltips-top  tooltips-small"  data-tooltips="small工具提示">Small</button>  
+<button class="tooltips-top  tooltips-medium"  data-tooltips="medium工具提示!!!!!!!">Medium</button>
+<button class="tooltips-top  tooltips-large"  data-tooltips="large工具提示!!!!!!!">Large</button>   
+<button class="tooltips-bottom  tooltips-always" data-tooltips="...还可以这样提示">还可以这样提示</button> 
+
+
+```
 
 # 开发 
 

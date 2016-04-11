@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "stylus -u autoprefixer-stylus styl/tooltips.styl -o dist/tooltips.min.css -c",
-    "watch": "stylus -u autoprefixer-stylus -w styl/tooltips.styl -o dist/tooltips.min.css -c "
+    "build": "stylus -u autoprefixer-stylus styl/index.styl -o dist/tooltips.min.css -c",
+    "watch": "stylus -u autoprefixer-stylus -w styl/index.styl -o dist/tooltips.min.css -c "
   },
   "author": "",
   "repository": {
