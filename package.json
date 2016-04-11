@@ -1,12 +1,12 @@
 {
-  "name": "gh-pages",
+  "name": "tooltips",
   "version": "1.0.3",
   "description": "纯css工具提示 tooltips",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "stylus -u autoprefixer-stylus styl/index.styl -o dist/index.min.css -c",
-    "watch": "stylus -u autoprefixer-stylus -w styl/index.styl -o dist/index.min.css -c "
+    "build": "stylus -u autoprefixer-stylus styl/index.styl -o dist/tooltips.min.css -c",
+    "watch": "stylus -u autoprefixer-stylus -w styl/index.styl -o dist/tooltips.min.css -c "
   },
   "author": "",
   "repository": {
@@ -16,7 +16,6 @@
   "devDependencies": {},
   "dependencies": {
     "autoprefixer-stylus": "^0.9.2",
-    "stylus": "^0.54.2",
-    "tooltips": "^1.0.2"
+    "stylus": "^0.54.2"
   }
 }
