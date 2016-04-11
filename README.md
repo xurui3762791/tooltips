@@ -6,8 +6,7 @@
 
 
 # 演示
-![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/picturedemo1.gif)
-![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/picturedemo2.gif)
+![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo.gif)
 
 # 使用
 
