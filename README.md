@@ -8,6 +8,15 @@
 # 演示
 ![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo.gif)
 
+
+# 安装
+
+```html
+
+npm install tooltips
+
+```
+
 # 使用
 
 ## 在 stylus 中使用
