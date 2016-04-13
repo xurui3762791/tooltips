@@ -9,31 +9,24 @@ $tooltipsVerticalPadding = 8px ;
 $tooltipsHorizontalPadding = 10px ;
 
 $tooltipsTooltipHeight = $tooltipsFontSize + 2 * $tooltipsVerticalPadding ;
-
 $tooltipsArrowBorderWidth = 6px ;
-
 $tooltipsArrowOffsetX = 2 * $tooltipsArrowBorderWidth ;
 
 $tooltipsTextShadowDarkenAmount = 25% ;
-
 $tooltipsTransitionDistance = 8px ;
-
 $tooltipsShowDelay = 100ms ;
-
 $tooltipsHideDelay = 0ms 
-
 $tooltipsZIndex = 1000000 ;
 
+// size
 $tooltipsSizeSmall = 80px ;
 $tooltipsSizeMedium = 150px ;
 $tooltipsSizeLarge = 300px ;
 
 
 
+// color
 $tooltipsDefaultColor = hsl(0, 0%, 22%) ;
-
-
-
 $tooltipsErrorColor = hsl(1, 40%, 50%) ;
 $tooltipsWarningColor = hsl(38, 46%, 54%) ;
 $tooltipsInfoColor = hsl(200, 50%, 45%) ;
@@ -45,46 +38,33 @@ $tooltipsSuccessColor = hsl(121, 32%, 40%) ;
 
 
 
-
 vendor(property, value)
     {property}  value
     -moz-{property}  value
     -webkit-{property}  value
     
-arrow-border-color(color){
-     for position in top  bottom  left  right {
-        if position == top or position == bottom {
-            for xDir in left  right {
-                &.{$tooltipsPrefix}{position}-{xDir}:before {
+arrow-border-color(color)
+     for position in top  bottom  left  right 
+        if position == top or position == bottom 
+            for xDir in left  right 
+                &.{$tooltipsPrefix}{position}-{xDir}:before 
                     border-{position}-color: color;
-                }
-            }
-        }
-        
-        &.{$tooltipsPrefix}{position}:before {
+
+        &.{$tooltipsPrefix}{position}:before 
             border-{position}-color: color;
-        }
-    }
-}
 
 
 
-set-margin(property, transitionDirection, $translateX=0) {
+set-margin(property, transitionDirection, $translateX=0) 
     $value = unquote((property) + '('+ $tooltipsTransitionDistance * transitionDirection +')')
-    &:before {
+    &:before 
         vendor('transform', $value);
-    }
-    &:after {
-        if $translateX != 0 {
+    &:after 
+        if $translateX != 0 
             vendor('transform', translateX($translateX) $value);
-        }
-        else {
+       
+        else 
             vendor('transform', $value);
-        }
-    }
-}
-
-
 
 vertical-positioned-tooltip(propertyY, transitionDirection, $xDirection=0)
     &:before 
@@ -117,28 +97,29 @@ vertical-positioned-tooltip(propertyY, transitionDirection, $xDirection=0)
         set-margin('translateY', transitionDirection, $translateX);
  
 
-horizontal-positioned-tooltip(propertyX, transitionDirection) {
-    &:before {
+horizontal-positioned-tooltip(propertyX, transitionDirection) 
+    &:before
         margin-{propertyX}: -2 * $tooltipsArrowBorderWidth + 1;
         margin-bottom: -1 * $tooltipsArrowBorderWidth;
-    }
 
-    &:after {
+    &:after 
         margin-bottom: -1 * floor($tooltipsTooltipHeight / 2);
-    }
 
-    &:before, &:after {
+    &:before, &:after 
         {propertyX}: 100%;
         bottom: 50%;
-    }
 
-    &:hover, &:focus {
+    &:hover, &:focus 
         set-margin('translateX', transitionDirection);
-    }
-}
 
 
+// color
 
+tooltips-type($color)
+    &:after
+        background-color: $color;
+        text-shadow: 0 -1px 0px darken($color, $tooltipsTextShadowDarkenAmount);
+    arrow-border-color($color);
 
 ///====== style
 
@@ -149,7 +130,7 @@ horizontal-positioned-tooltip(propertyX, transitionDirection) {
 
     &:before, 
     &:after 
-        border-radius 3px;
+        border-radius 4px;
         position absolute
         vendor('transform', translate3d(0, 0, 0))
 
@@ -161,21 +142,14 @@ horizontal-positioned-tooltip(propertyX, transitionDirection) {
         vendor('transition', 0.3s ease)
         vendor('transition-delay', $tooltipsHideDelay)
      
-
-
     &:hover:before, 
     &:hover:after
         visibility  visible
         opacity 1
 
-
-
     &:hover:before, 
     &:hover:after
         vendor('transition-delay', $tooltipsShowDelay);
-
-
-
     &:before 
         content: '';
         position: absolute;
@@ -197,12 +171,10 @@ horizontal-positioned-tooltip(propertyX, transitionDirection) {
     &:after
         display: none !important;
 
-
-
-
-
-
-
+[data-tooltips] 
+    &:after 
+        text-shadow: 0 -1px 0px darken($tooltipsDefaultColor, $tooltipsTextShadowDarkenAmount);
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 
 arrow-border-color($tooltipsDefaultColor);
 
@@ -234,81 +206,69 @@ arrow-border-color($tooltipsDefaultColor);
     vertical-positioned-tooltip('top', 1, 1);
 
 
-
-
-
 // size
 
 
 .{$tooltipsPrefix}small,
 .{$tooltipsPrefix}medium,
-.{$tooltipsPrefix}large {
-    &:after {
+.{$tooltipsPrefix}large 
+    &:after
         white-space: normal;
         line-height: 1.4em;
-    }
-}
 
-.{$tooltipsPrefix}small {
-    &:after {
+
+.{$tooltipsPrefix}small 
+    &:after 
         width: $tooltipsSizeSmall;
-    }
-}
-.{$tooltipsPrefix}medium {
-    &:after {
+
+.{$tooltipsPrefix}medium
+    &:after
         width: $tooltipsSizeMedium;
-    }
-}
-.{$tooltipsPrefix}large {
-    &:after {
+
+.{$tooltipsPrefix}large
+    &:after
         width: $tooltipsSizeLarge;
-    }
-}
 
-
-.{$tooltipsPrefix}always{
+.{$tooltipsPrefix}always
     &:after, 
-    &:before {
+    &:before 
         opacity: 1;
         visibility: visible;
-    }
 
-    &.{$tooltipsPrefix}top {
+    &.{$tooltipsPrefix}top
         set-margin('translateY', -1, -50%);
-
-        &-left {
+        &-left
             set-margin('translateY', -1, -100%);
-        }
-        &-right {
+        &-right 
             set-margin('translateY', -1, 0);
-        }
-    }
 
-    &.{$tooltipsPrefix}bottom {
+    &.{$tooltipsPrefix}bottom 
         set-margin('translateY', 1, -50%);
-        &-left {
+        &-left 
             set-margin('translateY', 1, -100%);
-        }
-        &-right {
-        set-margin('translateY', 1, 0);
-        }
-    }
+        
+        &-right
+            set-margin('translateY', 1, 0);
 
-    &.{$tooltipsPrefix}left {
+    &.{$tooltipsPrefix}left 
         set-margin('translateX', -1);
-    }
-
-    &.{$tooltipsPrefix}right {
+    &.{$tooltipsPrefix}right 
         set-margin('translateX', 1);
-    }
-}
 
 
+// coloe
 
+.{$tooltipsPrefix}error
+    tooltips-type($tooltipsErrorColor);
+    
+.{$tooltipsPrefix}warning 
+    tooltips-type($tooltipsWarningColor)
 
+.{$tooltipsPrefix}info
+    tooltips-type($tooltipsInfoColor)
 
-
-
+.{$tooltipsPrefix}success 
+    tooltips-type($tooltipsSuccessColor)
 
 
 

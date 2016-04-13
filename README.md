@@ -48,14 +48,25 @@ npm install tooltips
 <button data-tooltips="bottom-right" class="tooltips-bottom-right">bottom-right</button>
 <button data-tooltips="top-right" class="tooltips-top-right">top-right</button>
 <button data-tooltips="top-left" class="tooltips-top-left">top-left</button>
-
 <button class="tooltips-top  tooltips-small"  data-tooltips="small工具提示">Small</button>  
 <button class="tooltips-top  tooltips-medium"  data-tooltips="medium工具提示!!!!!!!">Medium</button>
 <button class="tooltips-top  tooltips-large"  data-tooltips="large工具提示!!!!!!!">Large</button>   
 <button class="tooltips-bottom  tooltips-always" data-tooltips="...还可以这样提示">还可以这样提示</button> 
 
+```
+
+## 新增背景颜色提示
+
+```html
+ 
+<button data-tooltips="error tooltips" class="tooltips-top tooltips-error">error</button>
+<button data-tooltips="warning tooltips" class="tooltips-top tooltips-warning">warning</button>
+<button data-tooltips="info tooltips" class="tooltips-top tooltips-info">info</button>
+<button data-tooltips="success tooltips" class="tooltips-top tooltips-success">top</button>
+
 
 ```
+
 
 # 开发 
 
