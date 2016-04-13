@@ -56,6 +56,18 @@ npm install tooltips --save
 
 ```
 
+## 新增背景颜色提示
+
+```html
+ 
+<button data-tooltips="error tooltips" class="tooltips-top tooltips-error">error</button>
+<button data-tooltips="warning tooltips" class="tooltips-top tooltips-warning">warning</button>
+<button data-tooltips="info tooltips" class="tooltips-top tooltips-info">info</button>
+<button data-tooltips="success tooltips" class="tooltips-top tooltips-success">top</button>
+
+
+```
+
 # 开发 
 
 ```bash
