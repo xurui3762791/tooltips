@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>纯css工具提示 tooltips</title>   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="description" content="纯css工具提示 tooltips"> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">    
+
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+          <meta http-equiv="Cache-Control" content="no-siteapp" />
+
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css
 ">
     <link rel="stylesheet" type="text/css" href="../dist/tooltips.min.css">
 
 
 </head>
+<style type="text/css">
+body{overflow-x:hidden;}
+    @media screen and (max-width: 400px) {
+        .tooltips-header h1 {
+            font-size: 55px;
+        }
+   }
+   .tooltips-header h1{text-shadow: 0 6px 1px rgba(0, 0, 0, 0.2);}
+</style>
 <body>
 
 <div class="tooltips-header">
@@ -19,14 +37,16 @@
 </a>
             <h1>tooltips.css</h1>
             <p>纯css打造的工具提示</p>
- <a href="javascript:void(0)" data-tooltips="Github Project" class="tooltips-top btn btn-lg btn-primary">Github Project</a>
- <a href="javascript:void(0)" data-tooltips="Download CSS" class="tooltips-top btn btn-lg btn-link hidden-xs">Download CSS</a>
+ <a target="_blank" href="https://github.com/xurui3762791/tooltips" data-tooltips="Github Project" class="tooltips-top btn btn-lg btn-primary">Github Project</a>
+ <a target="_blank" href="https://github.com/xurui3762791/tooltips" data-tooltips="Download CSS" class="tooltips-top btn btn-lg btn-link hidden-xs">Download CSS</a>
 
 
 
       </div>
 </div>
 <div class="container">
+
+
         <h4>Example</h4>
     <div class="tooltips_cell col-md-4 tooltips_color_1">
         <a href="javascript:void(0)" data-tooltips="bottom-right" class="tooltips-bottom-right">bottom-right</a>
@@ -55,6 +75,24 @@
     </div>
 <div class="clearfix"></div>
 
+
+        <h4>Color tools</h4>
+
+    <div class="tooltips_cell col-md-3 tooltips_color_13">
+        <a class="tooltips-top tooltips-error"  data-tooltips="error tooltips">error</a>   
+    </div>
+    <div class="tooltips_cell col-md-3 tooltips_color_14">
+        <a class="tooltips-top tooltips-warning"  data-tooltips="warning tooltips">warning</a>   
+    </div>
+    <div class="tooltips_cell col-md-3 tooltips_color_15">
+        <a class="tooltips-top tooltips-info"  data-tooltips="info tooltips">info</a>   
+    </div>
+    <div class="tooltips_cell col-md-3 tooltips_color_16">
+        <a class="tooltips-top tooltips-success"  data-tooltips="success tooltips">success</a>   
+    </div>
+
+
+<div class="clearfix"></div>
         <h4>Size tools</h4>
     <div class="tooltips_cell col-md-4 tooltips_color_10">
         <a class="tooltips-top  tooltips-small"  data-tooltips="small工具提示">Small</a>    
