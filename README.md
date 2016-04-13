@@ -6,7 +6,9 @@
 
 
 # 演示
-![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo.gif)
+![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo1.gif)
+![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo2.gif)
+![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo3.gif)
 
 # 安装
 
