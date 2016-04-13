@@ -11,10 +11,8 @@
 
 # 安装
 
-```html
-
-npm install tooltips
-
+```bash
+npm install tooltips --save
 ```
 
 # 使用
