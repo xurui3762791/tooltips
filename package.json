@@ -1,12 +1,12 @@
 {
   "name": "tooltips",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "纯css工具提示 tooltips",
-  "main": "index.js",
+  "main": "lib/tooltips.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "stylus -u autoprefixer-stylus styl/tooltips.styl -o dist/tooltips.min.css -c",
-    "watch": "stylus -u autoprefixer-stylus -w styl/tooltips.styl -o dist/tooltips.min.css -c "
+    "build": "stylus -u autoprefixer-stylus lib/tooltips.styl -o dist/tooltips.min.css -c",
+    "watch": "stylus -u autoprefixer-stylus -w lib/tooltips.styl -o dist/tooltips.min.css -c "
   },
   "author": "",
   "repository": {
