@@ -18,12 +18,39 @@ npm install tooltips --save
 
 # 使用
 
-## 在 stylus 中使用
+## 在 gulp 中使用
 
+
+### gulp
 ```css
-@import "node_modules/tooltips"
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var stylus = require('gulp-stylus');
+var tooltips = require('tooltips');
+var autoprefixer = require('gulp-autoprefixer');
+var browserslist = ['Android 2.3', 'Android >= 4', 'Chrome >= 20', 'Firefox >= 24', 'Explorer >= 8', 'iOS >= 6', 'Opera >= 12', 'Safari >= 6'];
+gulp.src('./public/styl/*.styl')
+    .pipe(stylus({
+        use:[tooltips()],
+        compress:true
+    }))
+    .pipe(autoprefixer({
+        browsers: browserslist,
+        cascade: false
+    }).on('error',gutil.log))
+    .pipe(gulp.dest('./public/css'));
+
 ```
 
+### index.styl
+```css
+@import 'stylus-px2rem'
+.banner{
+    height 140px
+    font-size 24px
+}
+
+```
 
 
 
