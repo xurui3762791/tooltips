@@ -44,7 +44,7 @@ gulp.src('./public/styl/*.styl')
 
 ### index.styl
 ```css
-@import 'stylus-px2rem'
+@import 'tooltips'
 .banner{
     height 140px
     font-size 24px
