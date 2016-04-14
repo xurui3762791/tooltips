@@ -9,22 +9,48 @@
 ![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo2.gif)
 ![tooltips](https://raw.githubusercontent.com/xurui3762791/tooltips/gh-pages/img/demo3.gif)
 
+
 # 安装
 
-```html
-
-npm install tooltips
-
+```bash
+npm install tooltips --save
 ```
 
 # 使用
 
-## 在 stylus 中使用
+## 在 gulp 中使用
 
+
+### gulp
 ```css
-@import "node_modules/tooltips"
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var stylus = require('gulp-stylus');
+var tooltips = require('tooltips');
+var autoprefixer = require('gulp-autoprefixer');
+var browserslist = ['Android 2.3', 'Android >= 4', 'Chrome >= 20', 'Firefox >= 24', 'Explorer >= 8', 'iOS >= 6', 'Opera >= 12', 'Safari >= 6'];
+gulp.src('./public/styl/*.styl')
+    .pipe(stylus({
+        use:[tooltips()],
+        compress:true
+    }))
+    .pipe(autoprefixer({
+        browsers: browserslist,
+        cascade: false
+    }).on('error',gutil.log))
+    .pipe(gulp.dest('./public/css'));
+
 ```
 
+### index.styl
+```css
+@import 'stylus-px2rem'
+.banner{
+    height 140px
+    font-size 24px
+}
+
+```
 
 
 
@@ -49,10 +75,12 @@ npm install tooltips
 <button data-tooltips="bottom-right" class="tooltips-bottom-right">bottom-right</button>
 <button data-tooltips="top-right" class="tooltips-top-right">top-right</button>
 <button data-tooltips="top-left" class="tooltips-top-left">top-left</button>
+
 <button class="tooltips-top  tooltips-small"  data-tooltips="small工具提示">Small</button>  
 <button class="tooltips-top  tooltips-medium"  data-tooltips="medium工具提示!!!!!!!">Medium</button>
 <button class="tooltips-top  tooltips-large"  data-tooltips="large工具提示!!!!!!!">Large</button>   
 <button class="tooltips-bottom  tooltips-always" data-tooltips="...还可以这样提示">还可以这样提示</button> 
+
 
 ```
 
@@ -67,7 +95,6 @@ npm install tooltips
 
 
 ```
-
 
 # 开发 
 
