@@ -13,7 +13,9 @@
 # 安装
 
 ```bash
+
 npm install tooltips --save
+
 ```
 
 # 使用
