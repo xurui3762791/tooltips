@@ -18,12 +18,6 @@ $tooltipsShowDelay = 100ms ;
 $tooltipsHideDelay = 0ms 
 $tooltipsZIndex = 1000000 ;
 
-// size
-$tooltipsSizeSmall = 80px ;
-$tooltipsSizeMedium = 150px ;
-$tooltipsSizeLarge = 300px ;
-
-
 
 // color
 $tooltipsDefaultColor = hsl(0, 0%, 22%) ;
@@ -31,6 +25,12 @@ $tooltipsErrorColor = hsl(1, 40%, 50%) ;
 $tooltipsWarningColor = hsl(38, 46%, 54%) ;
 $tooltipsInfoColor = hsl(200, 50%, 45%) ;
 $tooltipsSuccessColor = hsl(121, 32%, 40%) ;
+
+
+// size
+$tooltipsSizeSmall = 80px ;
+$tooltipsSizeMedium = 150px ;
+$tooltipsSizeLarge = 300px ;
 
 
 
@@ -121,7 +121,10 @@ tooltips-type($color)
         text-shadow: 0 -1px 0px darken($color, $tooltipsTextShadowDarkenAmount);
     arrow-border-color($color);
 
-///====== style
+
+
+
+// style
 
 
 [data-tooltips]
