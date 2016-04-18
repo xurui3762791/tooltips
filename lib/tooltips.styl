@@ -2,7 +2,7 @@
 // Variables
 
 
-$tooltipsPrefix ?= 'tooltips-' ;
+$tooltipsPrefix = 'tooltips-' ;
 $tooltipsFontSize = 12px ;
 $tooltipsFontFamily = 'Helvetica Neue', Helvetica, Arial, sans-serif ;
 $tooltipsVerticalPadding = 8px ;
@@ -42,7 +42,9 @@ vendor(property, value)
     {property}  value
     -moz-{property}  value
     -webkit-{property}  value
-    
+ 
+
+ // top bottom left right   
 arrow-border-color(color)
      for position in top  bottom  left  right 
         if position == top or position == bottom 
@@ -52,8 +54,6 @@ arrow-border-color(color)
 
         &.{$tooltipsPrefix}{position}:before 
             border-{position}-color: color;
-
-
 
 set-margin(property, transitionDirection, $translateX=0) 
     $value = unquote((property) + '('+ $tooltipsTransitionDistance * transitionDirection +')')
@@ -210,7 +210,6 @@ arrow-border-color($tooltipsDefaultColor);
 
 
 // size
-
 
 .{$tooltipsPrefix}small,
 .{$tooltipsPrefix}medium,
